@@ -15,18 +15,15 @@ const styles = {
    oplogo: `max-w-[35px] mr-[35px] `,
    oplogo2: `max-w-[35px] mr-[35px] hidden md:flex block  `,
    menubutton: `hover:text-[#6e45c7]`,
-   
 }
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false)
   return (
     <div className={styles.wrapper}>
-      
        <div className={styles.logo}>
             <span className={styles.logospan}>33</span>DEVS
        </div>
-
        <ul className={styles.menu}>
          {['ABOUT','TRAITS', 'ROADMAP', 'TEAM', 'FAQ' ].map((item)=> (
             <li className={styles.menuitem} key={`link-${item}`}>
@@ -36,44 +33,31 @@ const Navbar = () => {
 
          ))}
       </ul>
-      
       <a href="https://opensea.io/collection/33-devs-punks"><img className={styles.oplogo2} src={images.oplogo}/></a>
-
-
       <div className={styles.sidebar}>
-      
-      <div className={styles.oplogo}>
-      <a href="https://opensea.io/collection/33-devs-punks"><img  src={images.oplogo}/></a>
+         <div className={styles.oplogo}>
+         <a href="https://opensea.io/collection/33-devs-punks"><img  src={images.oplogo}/></a>
       </div>      
-
       <HiMenuAlt4  className={styles.menubutton} size={35} onClick={() => setToggle(true)} />  
-
-         {toggle && (      
-            <div className={styles.sidebarbg}
-         >  
-
+      {toggle && (      
+         <div className={styles.sidebarbg}>  
             <ul className={styles.sidebaritems}>
-            <motion.div
-            whileInView={{ x: [300, 0] }}
-            transition={{ duration: 0.85, ease: 'easeOut' }}
-          >
-               <HiX size={35} color='#6e45c7' onClick={() => setToggle(false)} />       
-               {['ABOUT','TRAITS', 'ROADMAP', 'TEAM', 'FAQ'].map((item) => (
-               <li className={styles.sidebaritemhover} key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)}>
-                     {item}
-                  </a>
-               </li>
-               ))}
+               <motion.div
+               whileInView={{ x: [300, 0] }}
+               transition={{ duration: 0.85, ease: 'easeOut' }}
+               >
+                  <HiX size={35} color='#6e45c7' onClick={() => setToggle(false)} />       
+                  {['ABOUT','TRAITS', 'ROADMAP', 'TEAM', 'FAQ'].map((item) => (
+                  <li className={styles.sidebaritemhover} key={item}>
+                     <a href={`#${item}`} onClick={() => setToggle(false)}>
+                        {item}
+                     </a>
+                  </li>
+                  ))}
                </motion.div>
             </ul>
-
-            </div>
-            
-          )}
-
-
-
+         </div>
+         )}
       </div>
 
    

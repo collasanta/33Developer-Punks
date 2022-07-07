@@ -13,19 +13,13 @@ const TraitCard = ({ traitname, traititems }) => {
      <>
          <div className={styles.header}> 
             <p>{traitname}</p>
-
          </div>
-
          <div className={styles.container}>
-
             {traititems.map(item=>(
                   <div className={styles.card}>
-                  <TraitItem itemname={item.name} chance={item.chance} img={item.img}/>
+                     <TraitItem itemname={item.name} chance={item.chance} img={item.img}/>
                   </div>
             ))}
-
-
-
          </div>
     </>
   )

@@ -26,14 +26,11 @@ const styles = {
    modal: `mx-auto`,
    spinner: `mx-auto mt-[100px] w-20 h-20 rounded-full animate-spin border-8 border-solid border-purple-500 border-t-transparent`,
    opensea: `max-w-[260px] mx-auto pt-[20px]`,
-
 }
-
 
 const address = "0xA58E6e03E6584DCcBDbd1Fbf09b8D38122af811a"
 const rpcurlprovider =  new ethers.providers.JsonRpcProvider(["https://polygon-rpc.com/"])
 const contract =  new ethers.Contract(address, abi, rpcurlprovider) 
-
 
 const Minter = () => {
    const [mintAmount, setmintAmount] = useState(1)
@@ -47,31 +44,25 @@ const Minter = () => {
    const [mintingmodal, setmintingmodal] = useState(false)
    
    window.onload = function () {
-
       async function handleaccountchange() {
          const accounts = await window.ethereum.request({ method: "eth_accounts" });
          const isConnected = !!accounts.length;
          isConnected ? setWalletconnected(true) : setWalletconnected(false) 
       }
-
       async function handlechainchange() {
          const mmprovider = await new ethers.providers.Web3Provider(window.ethereum)
          setMetamaskprovider(mmprovider)
          console.log("newprovidersetted")
       }
-
       if (window.ethereum !== "undefined") {
          window.ethereum.on('accountsChanged',() => {handleaccountchange()} );
          setmetamask(true)
       } else {setmetamask(false)}
-      
       if (window.ethereum !== "undefined") {
          window.ethereum.on('chainChanged',() => {handlechainchange()} );
          setmetamask(true)
       } else {setmetamask(false)}
-
    }
-
 
    async function connectWallet () {
       const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -84,26 +75,23 @@ const Minter = () => {
       const chainIdbg = await window.ethereum.chainId
       console.log("chainIdbg",chainIdbg)
       console.log("metamaskprovider",metamaskprovider)
-
       if (chainIdbg !== "0x89") {
          window.alert("MetaMask is connect to wrong network! To Mint, Please First Connect your MetaMask to Polygon Mainnet Network (ID:137) before minting")
-         // setWalletconnected(false)
       } else {
-      const signer = await metamaskprovider.getSigner()  
-      const signedcontract = await contract.connect(signer)
-      const totalprice = nftcostwei * mintAmount
-      const pay = {value: totalprice.toString() }
-      const minting = await signedcontract.mint(mintAmount, pay)
-      setmintingmodal(true)
-      await minting.wait()
-      setmintingmodal(false)
-      }
+         const signer = await metamaskprovider.getSigner()  
+         const signedcontract = await contract.connect(signer)
+         const totalprice = nftcostwei * mintAmount
+         const pay = {value: totalprice.toString() }
+         const minting = await signedcontract.mint(mintAmount, pay)
+         setmintingmodal(true)
+         await minting.wait()
+         setmintingmodal(false)
+         }
    }
 
    useEffect(() => {
       const rpcurlprovider =  new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/")
       const contract =  new ethers.Contract(address, abi, rpcurlprovider) 
-
       async function loaddata(){
          const nftcostbg = await contract.cost()
          const nftcostwei =  await nftcostbg.toString()
@@ -115,9 +103,7 @@ const Minter = () => {
          const totalSupply = await totalSupplybn.toString()
          setTotalsupply (totalSupply)
       } 
-   
       loaddata()
-
    }, [])
    
    useEffect(() => {
@@ -126,36 +112,28 @@ const Minter = () => {
       setprice(priceformatted)
     }, [mintAmount, nftcosteth])
 
-
   return (
     <>
-         <div className={styles.about1}>
-            <span className={styles.purple}>MINT</span> OPEN
-         </div>
+      <div className={styles.about1}>
+         <span className={styles.purple}>MINT</span> OPEN
+      </div>
       <div className={styles.bg}>
-
          <div className={styles.container}>
-
             <div className={styles.div1}>
-
                <div className={styles.image}>
                   <img  src={images.phidden} alt=""/>
                </div>
-
                <div className={styles.supply}>
                   <span>SUPPLY: </span>
                   <span className={styles.asupply}>{totalSupply}</span>/10.000
                </div>
-
             </div>
-            
             {
             !mintingmodal 
             ?
                <div className={styles.div2}>
                   <img src={images.pl} alt="" className={styles.polygon}></img>
                   {metamask ?
-
                      <div className={styles.btndiv} > 
                         { walletconnected ? "" :
                            <button className={styles.btnconnect} onClick={() => {connectWallet()}}>CONNECT WALLET</button>    
@@ -165,25 +143,25 @@ const Minter = () => {
                         }
                      </div>
                   : <div className={styles.metamaskerror}>Metamask Extension Not Detected! For minting, please install it and refresh the page </div>}                           
-                  {walletconnected ?                
-                     <div className={styles.amount}>
-                        <div>Amount:</div>
-                        <button className={styles.counterbtnp} onClick={() => {mintAmount > 1 ? setmintAmount(mintAmount-1): setmintAmount(mintAmount)}}>-</button>
-                        <span className={styles.counter}>{mintAmount}</span>
-                        <button className={styles.counterbtnn} onClick={() => {mintAmount < 5 ? setmintAmount(mintAmount+1): setmintAmount(mintAmount)}}>+</button>
-                     </div>  
-                  : "" }
+                     {walletconnected ?                
+                        <div className={styles.amount}>
+                           <div>Amount:</div>
+                           <button className={styles.counterbtnp} onClick={() => {mintAmount > 1 ? setmintAmount(mintAmount-1): setmintAmount(mintAmount)}}>-</button>
+                           <span className={styles.counter}>{mintAmount}</span>
+                           <button className={styles.counterbtnn} onClick={() => {mintAmount < 5 ? setmintAmount(mintAmount+1): setmintAmount(mintAmount)}}>+</button>
+                        </div>  
+                     : "" }
 
-                  {walletconnected ?  
-                  <div className={styles.supply}>
-                        <span>PRICE: </span>
-                        <span className={styles.asupply}>{mintAmount * nftcosteth == 0 ? "FREE" : price }</span> {mintAmount * nftcosteth == 0 ? "to mint" : "MATIC" }
-                     </div>
-                  : "" }
+                     {walletconnected ?  
+                        <div className={styles.supply}>
+                              <span>PRICE: </span>
+                              <span className={styles.asupply}>{mintAmount * nftcosteth == 0 ? "FREE" : price }</span> {mintAmount * nftcosteth == 0 ? "to mint" : "MATIC" }
+                        </div>
+                     : "" }
                   
-                  {walletconnected ?    
-                     <button className={styles.btnmint} onClick={()=>{mint()}}>MINT</button>
-                  : "" } 
+                     {walletconnected ?    
+                        <button className={styles.btnmint} onClick={()=>{mint()}}>MINT</button>
+                     : "" } 
                </div>
              : 
                <div className={styles.modal}>
@@ -193,7 +171,6 @@ const Minter = () => {
             }
          </div>
       </div>
-
     </>
   )
 }

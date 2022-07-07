@@ -13,33 +13,26 @@ const RoadmapCard = ({cardinfo}) => {
       title: ` font-[pix] text-white text-[30px] text-center   `,
       descbox: `z-1 bg-[#ffffff] shadow-lg p-2 w-[280px] mx-[10px] rounded-[40px] pt-[30px] pb-[10px] `,
       desc: ` font-[minitel] text-[17px] text-center   `,
-
    }
 
   return (
     <>
       <div className={styles.container}>
-
          <div className={styles.image} >
             <img src={image} alt=""/>
          </div>
-
          <div className={styles.container2} >
-
             <div className={styles.titlebox}>
                <div className={styles.title}>
                   {title}
                </div>
             </div>
-
             <div className={styles.descbox}>
                <div className={styles.desc}>
                   {description}
                </div>
             </div>
-
          </div>
-
       </div>
     </>
   )

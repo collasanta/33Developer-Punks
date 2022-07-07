@@ -14,31 +14,21 @@ const FAQCard = ({question, setactivefaq, activefaq}) => {
   return (
    <>
    <div className={styles.supercontainer}>
-
-   
       <div className={styles.container}>
-
          <div  className={styles.questiondiv} >
-
             <div onClick={()=>{setactivefaq(question.questionid)}} className={styles.question}>
                {question.question}
             </div>
-
             {activefaq === question.questionid ?
                <div onClick={()=>{setactivefaq("")}} className={styles.icon}>X </div>   
                : 
                <div onClick={()=>{setactivefaq(question.questionid)}} className={styles.icon}>V</div>            
             }
-
          </div>
       </div>
-
       <div className={activefaq === question.questionid ? styles.answerdiv : styles.hidden }>
-               
          {question.answer}
-
       </div>
-
    </div>
    </>
   )

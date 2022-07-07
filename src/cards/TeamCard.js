@@ -22,34 +22,26 @@ const TeamCard = ({cardinfo}) => {
   return (
     <>
       <div className={styles.container}>
-
          <div className={styles.image} >
             <img src={image} alt=""/>
          </div>
-
          <div className={styles.container2} >
-
             <div className={styles.titlebox}>
                <div className={styles.title}>
                   {title}
                </div>
-
             </div>
-
             <div className={styles.descbox}>
                <div className={styles.socialiconscontainer}>
                <a href={cardinfo.github}> <img className={styles.icons} src={images.gh} alt=""></img> </a>
                <a href={cardinfo.linkedin}> <img className={styles.icons} src={images.ln} alt=""></img> </a>
                <a href={cardinfo.twitter}> <img className={styles.icons} src={images.tt} alt=""></img> </a>
                </div>
-
                <div className={styles.desc}>
                   {description}
                </div>
             </div>
-
          </div>
-
       </div>
     </>
   )

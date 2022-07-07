@@ -16,15 +16,14 @@ const teamdata = [
    [{title:"MORPHEUS", description:"Business Advisor on how to scape the Matrix", image: images.p1, linkedin:"#team", twitter:'#team', github:'#team',}],
    [{title:"NEO", description:"CEO, helping awakening people from the dream", image: images.p3, linkedin:"#team", twitter:'#team', github:'#team',}],
 ]
+
 const Team = () => {
   return (
      <>
       <div className={styles.container} id="TEAM" >
          <div className={styles.header} > THE<span className={styles.purple}>TEAM</span> </div>
       </div>
-      
       <div className={styles.container2}>
-
          <div className={styles.cardcontainer} >
                {teamdata.map(cardinfo=>(
                   <div>

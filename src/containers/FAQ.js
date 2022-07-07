@@ -14,22 +14,15 @@ const faqdata = [
    {questionid:'faq02', question:'how can i mint?', answer:'this is the official website, you can mint here until the supply is over, after that you can buy one directly from the opensea market'},
    {questionid:'faq04', question:'what is the minting price?', answer:'Free for the first 100 minters, you will only pay the MATIC transaction fee'},
    {questionid:'faq03', question:'what are the benefits of the community?', answer:'A exclusive Discord Server with other developers and 33Devs Holders, with excluvise content dedicated to advance our development skills to the moon, you also will be able to join our presential and online meetups, all around the world'},
-
 ]
-
-
 
 const FAQ = () => {
    const [activefaq, setactivefaq] = useState(faqdata[0].questionid);
-
   return (
      <>
-
       <div className={styles.container} id="FAQ">
          <div className={styles.header}> F.A.Q </div>
-
          <div className={styles.faqcontainer}>
-
             {faqdata.map(question => (
                   <FAQCard
                   question={question}
@@ -37,12 +30,8 @@ const FAQ = () => {
                   activefaq={activefaq}
                   />
             ))}
-
-         
          </div>
       </div>
-
-
      </>
   )
 }

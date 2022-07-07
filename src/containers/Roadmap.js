@@ -19,11 +19,8 @@ const roadmapdata = [
 const Roadmap = () => {
   return (
      <>
-     
      <div className={styles.container} id="ROADMAP">
-         
          <div className={styles.header}>ROAD<span className={styles.purple}>MAP</span></div>
-     
          <div className={styles.cardcontainer} >
             {roadmapdata.map(cardinfo=>(
                <div>
@@ -33,11 +30,7 @@ const Roadmap = () => {
                </div>
             ))}
          </div>
-
-     
-     
      </div>
-
     </>
   )
 }

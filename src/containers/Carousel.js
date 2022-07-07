@@ -1,7 +1,6 @@
 import React from 'react'
 import { images } from '../assets';
 
-
 const Carousel = () => {
    const styles = {
       wrapper: `overflow-x-hidden`,
@@ -9,32 +8,27 @@ const Carousel = () => {
       image: `bg-[#ffffff] p-1 my-2 shadow-lg`,
       card: `px-2 `
    }
-  
-   var punks = [images.p1, images.p2, images.p3, images.p4, images.p5, images.p6, images.p7, images.p8, images.p9, images.p10 ]
 
-  return (
+var punks = [images.p1, images.p2, images.p3, images.p4, images.p5, images.p6, images.p7, images.p8, images.p9, images.p10 ]
+
+return (
          <>
-         
-         <div className={styles.wrapper}>
-            <div className={styles.imagescontainer}>
-
-               {punks.map(punk=>(
-                  <div className={styles.card}>
-                     <img className={styles.image} src={punk} alt="" />
-                  </div>
-               ))}
-
-               {punks.map(punk=>(
-                  <div className={styles.card}>
-                     <img className={styles.image} src={punk} alt="" />
-                  </div>
-               ))}
-
-            </div>
-         </div>         
-
+            <div className={styles.wrapper}>
+               <div className={styles.imagescontainer}>
+                  {punks.map(punk=>(
+                     <div className={styles.card}>
+                        <img className={styles.image} src={punk} alt="" />
+                     </div>
+                  ))}
+                  {punks.map(punk=>(
+                     <div className={styles.card}>
+                        <img className={styles.image} src={punk} alt="" />
+                     </div>
+                  ))}
+               </div>
+            </div>         
          </>
-
   )
 }
+
 export default Carousel

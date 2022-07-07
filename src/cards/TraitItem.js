@@ -9,13 +9,10 @@ const styles = {
    percentage:` font-[pix] text-[30px] align-middle text-[#45c76e]`,
 }
 
-
 const TraitItem = ({ itemname, chance, img }) => {
-
   return (
     <>
       <div className={styles.container}>
-
          <div className={styles.imagebox}>
             <img className={styles.image} src={img} alt=""></img>
          </div>
